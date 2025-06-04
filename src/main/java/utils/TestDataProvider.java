@@ -137,4 +137,11 @@ public class TestDataProvider {
                 {"Please enter your email address below to receive a password reset link."}
         };
     }
+
+    @DataProvider(name = "createAnAccountData")
+    public Object[][] createAnAccountData () {
+        return new Object[][]{
+                {"https://magento.softwaretestingboard.com/customer/account/create/"}
+        };
+    }
 }

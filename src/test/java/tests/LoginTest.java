@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.ForgotYourPassword;
+import pages.RegistrationPage;
 import utils.BaseClass;
 import pages.HomePage;
 import pages.LoginPage;
@@ -90,16 +91,18 @@ public class LoginTest {
         Assert.assertEquals(actualResult,expectedResult);
     }
 
-    @Test(dataProvider = "forgetPasswordData", dataProviderClass = utils.TestDataProvider.class)
-    public void verifyCreateAccountButtonRedirect(){
+    @Test(dataProvider = "createAnAccountData", dataProviderClass = utils.TestDataProvider.class)
+    public void verifyCreateAccountButtonRedirect(String expectedResult){
 
         HomePage HP = new HomePage();
         HP.clickOnSignIn();
 
         LoginPage LP = new LoginPage();
+        LP.clickOnCreateAnAccountButton();
 
-        ForgotYourPassword FYP = new ForgotYourPassword();
-        FYP.verifyForgotPasswordPageRedirection();
+        RegistrationPage RP = new RegistrationPage();
+        String actualResult = driver.getCurrentUrl();
+        Assert.assertEquals(actualResult,expectedResult);
 
     }
 

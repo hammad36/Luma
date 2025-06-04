@@ -6,7 +6,7 @@
         <classes>
             <class name="tests.LoginTest">
                 <methods>
-                    <include name="verifyForgotPasswordFunctionality"/>
+                    <include name="verifyCreateAccountButtonRedirect"/>
                 </methods>
             </class>
         </classes>
