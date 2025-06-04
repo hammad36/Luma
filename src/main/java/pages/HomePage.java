@@ -26,4 +26,10 @@ public class HomePage {
         wait.until(ExpectedConditions.elementToBeClickable((By.cssSelector("div[class='panel header'] li[data-label='or'] a"))));
         driver.findElement(By.cssSelector("div[class='panel header'] li[data-label='or'] a")).click();
     }
+    public String verifyWelcomeMessage(){
+        WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//div[@class='panel header']//span[@class='logged-in'][normalize-space()='Welcome, Mohammed Hammad!']"))));
+        return driver.findElement(By.xpath("//div[@class='panel header']//span[@class='logged-in'][normalize-space()='Welcome, Mohammed Hammad!']")).getText();
+    }
+
 }

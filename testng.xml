@@ -4,9 +4,9 @@
     <test name="tests" >
         <parameter name="appURL" value="https://magento.softwaretestingboard.com"/>
         <classes>
-            <class name="tests.RegistrationTest">
+            <class name="tests.LoginTest">
                 <methods>
-                    <include name="verifySignupWithLongInputValues"/>
+                    <include name="verifyForgotPasswordFunctionality"/>
                 </methods>
             </class>
         </classes>
