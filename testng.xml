@@ -6,7 +6,7 @@
         <classes>
             <class name="tests.HomePageTest">
                 <methods>
-                    <include name="clearCart"/>
+                    <include name="clickOnSignOut"/>
                 </methods>
             </class>
         </classes>

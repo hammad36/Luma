@@ -161,4 +161,22 @@ public class HomePage {
         driver.findElement(By.cssSelector(".action.delete")).click();
         driver.findElement(By.cssSelector(".action-primary.action-accept")).click();
     }
+
+    public void clickOnMyAccount(){
+        driver.findElement(By.cssSelector(".action.switch")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("My Account")));
+        driver.findElement(By.linkText("My Account")).click();
+    }
+
+    public void clickOnMyWishList(){
+        driver.findElement(By.cssSelector(".action.switch")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("My Wish List")));
+        driver.findElement(By.partialLinkText("My Wish List")).click();
+    }
+
+    public void signOut(){
+        driver.findElement(By.cssSelector(".action.switch")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Sign Out")));
+        driver.findElement(By.partialLinkText("Sign Out")).click();
+    }
 }

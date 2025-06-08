@@ -67,6 +67,32 @@ public class HomePageTest {
         }
     }
 
+    @Test(dataProvider = "ValidLoginData", dataProviderClass = utils.TestDataProvider.class)
+    public void navigateToMyAccountPage(String email, String password , String expectedResult) {
+        LoginTest loginObject = new LoginTest();
+        loginObject.logInWithValidCredentials(email, password, expectedResult);
+        HomePage HP = new HomePage();
+
+        HP.clickOnMyAccount();
+    }
+
+    @Test(dataProvider = "ValidLoginData", dataProviderClass = utils.TestDataProvider.class)
+    public void navigateToMyWishList(String email, String password , String expectedResult) {
+        LoginTest loginObject = new LoginTest();
+        loginObject.logInWithValidCredentials(email, password, expectedResult);
+        HomePage HP = new HomePage();
+
+        HP.clickOnMyWishList();
+    }
+
+    @Test(dataProvider = "ValidLoginData", dataProviderClass = utils.TestDataProvider.class)
+    public void clickOnSignOut(String email, String password , String expectedResult) {
+        LoginTest loginObject = new LoginTest();
+        loginObject.logInWithValidCredentials(email, password, expectedResult);
+        HomePage HP = new HomePage();
+
+        HP.signOut();
+    }
 
     @AfterClass
     public void tearDown() {
