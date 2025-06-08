@@ -49,6 +49,11 @@ public class HomePage {
     }
 
 
+    public List<WebElement> getAllCartItems(){
+        return driver.findElements(By.cssSelector("ol#mini-cart li.product-item"));
+    }
+
+
 
 
     public void chooseSizeByIndex(String label){
@@ -146,4 +151,14 @@ public class HomePage {
         return driver.findElement(By.cssSelector("div.message-success.success.message > div")).getText();
     }
 
+    public void clickOnCartIcon(){
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".action.showcart")));
+        driver.findElement(By.cssSelector(".action.showcart")).click();
+    }
+
+    public void deleteItems(){
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".action.delete")));
+        driver.findElement(By.cssSelector(".action.delete")).click();
+        driver.findElement(By.cssSelector(".action-primary.action-accept")).click();
+    }
 }

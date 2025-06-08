@@ -50,6 +50,23 @@ public class HomePageTest {
 
     }
 
+    @Test(dataProvider = "ValidLoginData", dataProviderClass = utils.TestDataProvider.class)
+    public void clearCart (String email, String password , String expectedResult){
+        LoginTest loginObject = new LoginTest();
+        loginObject.logInWithValidCredentials(email , password , expectedResult);
+        HomePage HP = new HomePage();
+
+        HP.clickOnCartIcon();
+
+        // نحصل على كل عناصر الكارت
+        List<WebElement> cartItems = HP.getAllCartItems();
+
+        // نحذف كل عنصر
+        for (WebElement item : cartItems) {
+            HP.deleteItems(); // أو الزرار اللي بيشيل المنتج
+        }
+    }
+
 
     @AfterClass
     public void tearDown() {
