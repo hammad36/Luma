@@ -4,9 +4,9 @@
     <test name="tests" >
         <parameter name="appURL" value="https://magento.softwaretestingboard.com"/>
         <classes>
-            <class name="tests.LoginTest">
+            <class name="tests.HomePageTest">
                 <methods>
-                    <include name="verifyCreateAccountButtonRedirect"/>
+                    <include name="testAddToCartFromHomeHover"/>
                 </methods>
             </class>
         </classes>
