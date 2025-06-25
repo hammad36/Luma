@@ -10,9 +10,11 @@ import java.time.Duration;
 
 public class RegistrationPage {
     WebDriver driver;
+    WebDriverWait wait;
 
     public RegistrationPage() {
         this.driver = BaseClass.getInstance().getDriver();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void fillRegistrationForm(String firstName , String lastName , String email , String password ,String confirmPassword){
@@ -26,25 +28,21 @@ public class RegistrationPage {
     }
 
     public void clickOnRegisterButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@title='Create an Account']//span[contains(text(),'Create an Account')]")));
         driver.findElement(By.xpath("//button[@title='Create an Account']//span[contains(text(),'Create an Account')]")).click();
     }
 
     public String errorMessageForLowStrengthPassword(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='password-error']")));
        return driver.findElement(By.xpath("//div[@id='password-error']")).getText();
     }
 
     public String errorMessageForInvalidEmail(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("email_address-error")));
        return driver.findElement(By.id("email_address-error")).getText();
     }
 
     public String errorMessageForEmptyFields() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         StringBuilder errors = new StringBuilder();
 
         try {
@@ -76,23 +74,19 @@ public class RegistrationPage {
     }
 
     public String errorMessageForPasswordMismatch(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("password-confirmation-error")));
         return driver.findElement(By.id("password-confirmation-error")).getText();
     }
 
     public String errorMessageForAlreadyRegisteredEmail(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")));
         return driver.findElement(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")).getText();
     }
 
     public String errorMessageForLongInputValues(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")));
         return driver.findElement(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")).getText();
     }
-
 
 }
 

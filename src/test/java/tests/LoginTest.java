@@ -9,6 +9,9 @@ import utils.BaseClass;
 import pages.HomePage;
 import pages.LoginPage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginTest {
     WebDriver driver;
 

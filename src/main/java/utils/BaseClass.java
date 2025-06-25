@@ -10,7 +10,6 @@ public class BaseClass {
     private WebDriver driver;
 
     private BaseClass() {
-        // Private constructor to prevent instantiation
     }
 
     public static BaseClass getInstance() {

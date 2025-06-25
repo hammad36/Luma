@@ -21,7 +21,6 @@ public class HomePage {
     }
 
     public void clickOnCreateAnAccount(){
-
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("header[class='page-header'] li:nth-child(3) a:nth-child(1)")));
         driver.findElement(By.cssSelector("header[class='page-header'] li:nth-child(3) a:nth-child(1)")).click();
     }
@@ -80,29 +79,6 @@ public class HomePage {
 
     }
 
-    public void addToCompare(){
-        wait.until(ExpectedConditions.elementToBeClickable((By.linkText("Add to Compare"))));
-        driver.findElement(By.linkText("Add to Compare")).click();
-    }
-
-    public void addToWishList(){
-        wait.until(ExpectedConditions.elementToBeClickable((By.linkText("Add to Wish List"))));
-        driver.findElement(By.linkText("Add to Wish List")).click();
-    }
-
-    public void addProductToCart(String sizeLabel, String colorLabel){
-        List<WebElement> sizes = getAllAvailableSizes();
-        if (!sizes.isEmpty()) {
-            chooseSizeByIndex(sizeLabel);
-        }
-
-        List<WebElement> colors = selectALLColors();
-        if (!colors.isEmpty()) {
-            selectColorByLabel(colorLabel);
-        }
-
-        addToCart();
-    }
 
     public void addSpecificProductToCartUsingHover(WebElement product, String sizeLabel, String colorLabel) {
         Actions actions = new Actions(driver);
@@ -180,3 +156,32 @@ public class HomePage {
         driver.findElement(By.partialLinkText("Sign Out")).click();
     }
 }
+/*
+
+
+
+    public void addToCompare(){
+        wait.until(ExpectedConditions.elementToBeClickable((By.linkText("Add to Compare"))));
+        driver.findElement(By.linkText("Add to Compare")).click();
+    }
+
+    public void addToWishList(){
+        wait.until(ExpectedConditions.elementToBeClickable((By.linkText("Add to Wish List"))));
+        driver.findElement(By.linkText("Add to Wish List")).click();
+    }
+
+    public void addProductToCart(String sizeLabel, String colorLabel){
+        List<WebElement> sizes = getAllAvailableSizes();
+        if (!sizes.isEmpty()) {
+            chooseSizeByIndex(sizeLabel);
+        }
+
+        List<WebElement> colors = selectALLColors();
+        if (!colors.isEmpty()) {
+            selectColorByLabel(colorLabel);
+        }
+
+        addToCart();
+    }
+
+ */

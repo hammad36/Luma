@@ -8,18 +8,18 @@ import utils.BaseClass;
 
 import java.time.Duration;
 
-public class MyAccountPage {
+public class SignOutPage {
+
     WebDriver driver;
     WebDriverWait wait;
 
-    public MyAccountPage() {
+    public SignOutPage() {
         this.driver = BaseClass.getInstance().getDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public String getSuccessMessage(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.message-success.success.message")));
-        return driver.findElement(By.cssSelector("div.message-success.success.message")).getText();
+    public String getTitle(){
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@data-ui-id='page-title-wrapper' and contains(text(),'You are signed out')]")));
+        return driver.findElement(By.xpath("//span[@data-ui-id='page-title-wrapper' and contains(text(),'You are signed out')]")).getText();
     }
 }

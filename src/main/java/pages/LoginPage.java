@@ -10,8 +10,11 @@ import java.time.Duration;
 
 public class LoginPage {
     WebDriver driver;
+    WebDriverWait wait;
+
     public LoginPage(){
         this.driver =  BaseClass.getInstance().getDriver();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void fillLoginForm(String email , String password){
@@ -20,31 +23,26 @@ public class LoginPage {
     }
 
     public void clickOnLoginButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//fieldset[@class='fieldset login']//span[contains(text(),'Sign In')]")));
         driver.findElement(By.xpath("//fieldset[@class='fieldset login']//span[contains(text(),'Sign In')]")).click();
     }
 
     public void forgotYourPassword(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='action remind']//span[contains(text(),'Forgot Your Password?')]")));
         driver.findElement(By.xpath("//a[@class='action remind']//span[contains(text(),'Forgot Your Password?')]")).click();
     }
 
     public void clickOnCreateAnAccountButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//a[@class='action create primary']//span[contains(text(),'Create an Account')]"))));
         driver.findElement(By.xpath("//a[@class='action create primary']//span[contains(text(),'Create an Account')]")).click();
     }
 
     public String errorMessageForInvalidData(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))));
         return driver.findElement(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")).getText();
     }
 
     public String errorMessageForEmptyFields() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         StringBuilder errors = new StringBuilder();
 
         try {
