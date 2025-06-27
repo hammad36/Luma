@@ -43,7 +43,6 @@ public class HomePageTest {
         List<WebElement> products = HP.getAllProductItems();
         Assert.assertFalse(products.isEmpty(), "No products found on Home Page!");
 
-        // نجرب نضيف أول منتج بالطريقة دي
         HP.addSpecificProductToCartUsingHover(products.get(0), "M", "Blue");
 
         String expectedMessage = "You added Radiant Tee to your shopping cart.";
@@ -81,7 +80,6 @@ public class HomePageTest {
         List<WebElement> products = HP.getAllProductItems();
         Assert.assertFalse(products.isEmpty(), "No products found on Home Page!");
 
-        // نجرب نضيف أول منتج بالطريقة دي
         HP.addSpecificProductToCartUsingHover(products.get(3), "", "Green");
 
         String expectedMessage = "You need to choose options for your item.";
@@ -98,7 +96,6 @@ public class HomePageTest {
         List<WebElement> products = HP.getAllProductItems();
         Assert.assertFalse(products.isEmpty(), "No products found on Home Page!");
 
-        // نجرب نضيف أول منتج بالطريقة دي
         HP.addSpecificProductToCartUsingHover(products.get(3), "L", "");
 
         String expectedMessage = "You need to choose options for your item.";
@@ -115,12 +112,10 @@ public class HomePageTest {
 
         HP.clickOnCartIcon();
 
-        // نحصل على كل عناصر الكارت
         List<WebElement> cartItems = HP.getAllCartItems();
 
-        // نحذف كل عنصر
         for (WebElement item : cartItems) {
-            HP.deleteItems(); // أو الزرار اللي بيشيل المنتج
+            HP.deleteItems();
         }
     }
 
@@ -167,16 +162,3 @@ public class HomePageTest {
 }
 
 
-    /*
-
-    public void verifyAddToCartFromHomePageUsingHover() {}
-public void verifySizeAndColorOptionsAppearOnHover() {}
-public void verifyPreventAddToCartWithoutSizeOrColor() {}
-public void verifyCorrectSizeAndColorAddedToCart() {}
-public void verifyMultipleProductsAddedUsingHover() {}
-public void verifyNavigationBarIsVisibleOnHomePage() {}
-
-
-
-
-     */

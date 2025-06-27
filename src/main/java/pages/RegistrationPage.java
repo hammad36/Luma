@@ -70,7 +70,7 @@ public class RegistrationPage {
             errors.append(passwordConfirmationError).append("\n");
         } catch (Exception ignored) {}
 
-        return errors.toString().trim(); // remove the last newline
+        return errors.toString().trim();
     }
 
     public String errorMessageForPasswordMismatch(){

@@ -1,5 +1,6 @@
 package tests;
 
+import com.aventstack.extentreports.ExtentReports;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -8,12 +9,12 @@ import pages.RegistrationPage;
 import utils.BaseClass;
 import pages.HomePage;
 import pages.LoginPage;
-
-import java.util.HashMap;
-import java.util.Map;
+import utils.ExtentManager;
 
 public class LoginTest {
     WebDriver driver;
+    ExtentReports extent = ExtentManager.getReportObject();
+
 
     @Parameters("appURL")
     @BeforeClass
@@ -24,7 +25,7 @@ public class LoginTest {
     }
 
 
-    @Test(dataProvider = "ValidLoginData", dataProviderClass = utils.TestDataProvider.class)
+    @Test(dataProvider = "ValidLoginData", groups = {"smoke"} , dataProviderClass = utils.TestDataProvider.class)
     public void logInWithValidCredentials(String email , String password , String expectedResult){
 
         HomePage HP = new HomePage();
@@ -38,7 +39,7 @@ public class LoginTest {
         Assert.assertEquals(actualResult,expectedResult);
     }
 
-    @Test(dataProvider = "inValidEmailData", dataProviderClass = utils.TestDataProvider.class)
+    @Test(dataProvider = "inValidEmailData" , groups = {"smoke"}, dataProviderClass = utils.TestDataProvider.class)
     public void logInWithInvalidEmail(String email , String password , String expectedResult){
 
         HomePage HP = new HomePage();
@@ -52,7 +53,7 @@ public class LoginTest {
         Assert.assertEquals(actualResult,expectedResult);
     }
 
-    @Test(dataProvider = "inValidPasswordData", dataProviderClass = utils.TestDataProvider.class)
+    @Test(dataProvider = "inValidPasswordData", groups = {"smoke"}, dataProviderClass = utils.TestDataProvider.class)
     public void logInWithInvalidPassword(String email , String password , String expectedResult){
 
         HomePage HP = new HomePage();
@@ -64,6 +65,7 @@ public class LoginTest {
 
         String actualResult = LP.errorMessageForInvalidData();
         Assert.assertEquals(actualResult,expectedResult);
+        extent.flush();
     }
 
     @Test(dataProvider = "emptyLoginFieldsData", dataProviderClass = utils.TestDataProvider.class)

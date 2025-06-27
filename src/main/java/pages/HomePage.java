@@ -84,7 +84,6 @@ public class HomePage {
         Actions actions = new Actions(driver);
         actions.moveToElement(product).pause(Duration.ofMillis(500)).perform();
 
-        // نحاول نختار المقاس لو موجود
         List<WebElement> sizes = product.findElements(By.cssSelector(".swatch-attribute.size .swatch-option"));
         if (!sizes.isEmpty()) {
             for (WebElement size : sizes) {

@@ -1,21 +1,7 @@
-
 <suite name="LumaRegressionSuite" verbose="1" parallel="tests" thread-count="3">
 
     <!-- Global Parameter -->
     <parameter name="appURL" value="https://magento.softwaretestingboard.com"/>
-
-<!--    &lt;!&ndash; Home Page Tests &ndash;&gt;-->
-<!--    <test name="HomePage Test">-->
-<!--        <classes>-->
-<!--            <class name="tests.HomePageTest">-->
-<!--                <methods>-->
-<!--                    <include name="navigateToMyAccountPage"/>-->
-<!--                    <include name="clickOnSignOut"/>-->
-<!--                    <include name="testAddingProductToCart"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
 
     <!-- Login Tests -->
     <test name="Login Test">
@@ -24,35 +10,20 @@
         </classes>
     </test>
 
-<!--    &lt;!&ndash; Registration Tests &ndash;&gt;-->
-<!--    <test name="Registration Test">-->
-<!--        <classes>-->
-<!--            <class name="tests.RegistrationTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!-- TestNG Listener -->
+    <listeners>
+        <listener class-name="utils.TestListener"/>
+    </listeners>
 
+
+<!--<test name="SmokeOnly">-->
+<!--    <groups>-->
+<!--        <run>-->
+<!--            <include name="smoke"/>-->
+<!--        </run>-->
+<!--    </groups>-->
+<!--    <classes>-->
+<!--        <class name="tests"/>-->
+<!--    </classes>-->
+<!--</test>-->
 </suite>
-
-
-<!--<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">-->
-
-<!--<suite name="Regression" verbose="1" thread-count="3" >-->
-<!--    <test name="tests" >-->
-<!--        <parameter name="appURL" value="https://magento.softwaretestingboard.com"/>-->
-<!--        <classes>-->
-<!--            <class name="tests.HomePageTest">-->
-<!--                <methods>-->
-<!--&lt;!&ndash;                    <include name="testAddingProductToCart"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <include name="testAddToCartWithoutSize"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <include name="testAddToCartWithoutColor"/>&ndash;&gt;-->
-<!--                    <include name="navigateToMyAccountPage"/>-->
-<!--&lt;!&ndash;                    <include name="navigateToMyWishList"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <include name="clickOnSignOut"/>&ndash;&gt;-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--</suite>-->
-
-
-
