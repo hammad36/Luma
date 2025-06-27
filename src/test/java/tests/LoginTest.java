@@ -33,7 +33,7 @@ public class LoginTest {
         HP.clickOnSignIn();
 
         LoginPage LP = new LoginPage();
-        LP.fillLoginForm(email,password);
+        LP.fillLoginForm(email,"MMMgfdsasdd@rter323");
         LP.clickOnLoginButton();
 
         String actualResult = HP.verifyWelcomeMessage();

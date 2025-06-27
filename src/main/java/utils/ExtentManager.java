@@ -14,7 +14,7 @@ public class ExtentManager {
 
         extent = new ExtentReports();
         extent.attachReporter(reporter);
-        extent.setSystemInfo("Tester", "Hammad");
+        extent.setSystemInfo("Tester", "Mohammed Hammad");
         return extent;
     }
 }

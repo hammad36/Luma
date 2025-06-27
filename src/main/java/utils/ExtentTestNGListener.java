@@ -29,7 +29,7 @@ public class ExtentTestNGListener implements ITestListener {
         extentTest.get().fail(result.getThrowable());
         // Get driver instance and take screenshot
         Object testClass = result.getInstance();
-        WebDriver driver = ((BaseClass) testClass).getDriver();
+        WebDriver driver = BaseClass.getInstance().getDriver();
         String screenshotPath = ScreenshotUtil.takeScreenshot(driver, result.getName());
         extentTest.get().addScreenCaptureFromPath(screenshotPath);
     }
