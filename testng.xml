@@ -6,15 +6,19 @@
     <!-- Login Tests -->
     <test name="Login Test">
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.LoginTest">
+                <methods>
+                    <include name="logInWithValidCredentials"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
     <!-- TestNG Listener -->
     <listeners>
-        <listener class-name="utils.TestListener"/>
+        <listener class-name="utils.ExtentTestNGListener"/>
     </listeners>
-
+</suite>
 
 <!--<test name="SmokeOnly">-->
 <!--    <groups>-->
@@ -26,4 +30,4 @@
 <!--        <class name="tests"/>-->
 <!--    </classes>-->
 <!--</test>-->
-</suite>
+

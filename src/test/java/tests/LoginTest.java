@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import pages.ForgotYourPassword;
 import pages.RegistrationPage;
 import utils.BaseClass;
@@ -25,9 +26,9 @@ public class LoginTest {
     }
 
 
-    @Test(dataProvider = "ValidLoginData", groups = {"smoke"} , dataProviderClass = utils.TestDataProvider.class)
+    @Test(dataProvider = "inValidEmailData", groups = {"smoke"} , dataProviderClass = utils.TestDataProvider.class)
     public void logInWithValidCredentials(String email , String password , String expectedResult){
-
+        SoftAssert softAssert = new SoftAssert();
         HomePage HP = new HomePage();
         HP.clickOnSignIn();
 
@@ -36,7 +37,8 @@ public class LoginTest {
         LP.clickOnLoginButton();
 
         String actualResult = HP.verifyWelcomeMessage();
-        Assert.assertEquals(actualResult,expectedResult);
+        softAssert.assertEquals(actualResult,expectedResult);
+        softAssert.assertAll();
     }
 
     @Test(dataProvider = "inValidEmailData" , groups = {"smoke"}, dataProviderClass = utils.TestDataProvider.class)

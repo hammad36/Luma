@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class ScreenshotUtil {
 
-    public static void takeScreenshot(WebDriver driver, String testName) {
+    public static String takeScreenshot(WebDriver driver, String testName) {
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
@@ -20,11 +20,15 @@ public class ScreenshotUtil {
             }
 
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            FileHandler.copy(src, new File(dir + "/" + testName + "_" + timestamp + ".png"));
+            String path = "screenshots/" + testName + "_" + timestamp + ".png";
+            FileHandler.copy(src, new File(path));
+            return path;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
+
 
 }
