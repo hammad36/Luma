@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.BaseClass;
 
 import java.time.Duration;
@@ -17,7 +18,7 @@ public class HomePage {
 
     public HomePage() {
         this.driver = BaseClass.getInstance().getDriver();
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(6));
     }
 
     public void clickOnCreateAnAccount(){
@@ -30,9 +31,12 @@ public class HomePage {
         driver.findElement(By.cssSelector("div[class='panel header'] li[data-label='or'] a")).click();
     }
 
-    public String verifyWelcomeMessage(){
-        wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//div[@class='panel header']//span[@class='logged-in'][normalize-space()='Welcome, Mohammed Hammad!']"))));
-        return driver.findElement(By.xpath("//div[@class='panel header']//span[@class='logged-in'][normalize-space()='Welcome, Mohammed Hammad!']")).getText();
+    public String verifyWelcomeMessage() {
+        By welcomeMessage = By.xpath("//div[@class='panel header']//span[@class='logged-in']");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(welcomeMessage));
+        String text = driver.findElement(welcomeMessage).getText();
+        Assert.assertTrue(text.contains("Welcome,"));
+        return text;
     }
 
     public List<WebElement> getAllProductItems(){
@@ -122,7 +126,7 @@ public class HomePage {
     }
 
     public String getSuccessMessage (){
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.message-success.success.message > div")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.message-success.success.message > div")));
         return driver.findElement(By.cssSelector("div.message-success.success.message > div")).getText();
     }
 

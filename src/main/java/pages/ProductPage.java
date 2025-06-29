@@ -18,7 +18,7 @@ public class ProductPage {
     }
 
     public String getErrorMessage(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".message-notice.notice.message")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".message-notice.notice.message")));
         return driver.findElement(By.cssSelector(".message-notice.notice.message")).getText();
     }
 

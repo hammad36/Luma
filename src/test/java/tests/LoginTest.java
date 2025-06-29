@@ -26,14 +26,14 @@ public class LoginTest {
     }
 
 
-    @Test(dataProvider = "inValidEmailData", groups = {"smoke"} , dataProviderClass = utils.TestDataProvider.class)
+    @Test(dataProvider = "ValidLoginData", groups = {"smoke"} , dataProviderClass = utils.TestDataProvider.class)
     public void logInWithValidCredentials(String email , String password , String expectedResult){
         SoftAssert softAssert = new SoftAssert();
         HomePage HP = new HomePage();
         HP.clickOnSignIn();
 
         LoginPage LP = new LoginPage();
-        LP.fillLoginForm(email,"MMMgfdsasdd@rter323");
+        LP.fillLoginForm(email,password);
         LP.clickOnLoginButton();
 
         String actualResult = HP.verifyWelcomeMessage();

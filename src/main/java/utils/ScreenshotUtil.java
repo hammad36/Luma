@@ -14,21 +14,18 @@ public class ScreenshotUtil {
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-            File dir = new File("screenshots");
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String path = "screenshots/" + testName + "_" + timestamp + ".png";
-            FileHandler.copy(src, new File(path));
-            return path;
+            String screenshotDir = System.getProperty("user.dir") + "/screenshots/";
+            File dir = new File(screenshotDir);
+
+
+            String fullPath = screenshotDir + testName + "_" + timestamp + ".png";
+            FileHandler.copy(src, new File(fullPath));
+            return fullPath;
 
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
-
-
 }

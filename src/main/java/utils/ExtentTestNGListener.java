@@ -6,11 +6,12 @@ import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.testng.*;
 
+import java.io.IOException;
+
 public class ExtentTestNGListener implements ITestListener {
 
     ExtentReports extent = ExtentManager.getReportObject();
     ExtentTest test;
-
     private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 
     @Override
@@ -27,20 +28,20 @@ public class ExtentTestNGListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         extentTest.get().fail(result.getThrowable());
-        // Get driver instance and take screenshot
-        Object testClass = result.getInstance();
         WebDriver driver = BaseClass.getInstance().getDriver();
+
         String screenshotPath = ScreenshotUtil.takeScreenshot(driver, result.getName());
-        extentTest.get().addScreenCaptureFromPath(screenshotPath);
+
+        extentTest.get().addScreenCaptureFromPath(screenshotPath, " Screenshot on Failure");
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        extentTest.get().skip("Test Skipped");
+        extentTest.get().log(Status.SKIP, " Test Skipped");
     }
 
     @Override
     public void onFinish(ITestContext context) {
-        extent.flush(); // VERY IMPORTANT to generate report!
+        extent.flush();
     }
 }

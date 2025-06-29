@@ -19,7 +19,7 @@ public class MyAccountPage {
 
     public String getSuccessMessage(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.message-success.success.message")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.message-success.success.message")));
         return driver.findElement(By.cssSelector("div.message-success.success.message")).getText();
     }
 }

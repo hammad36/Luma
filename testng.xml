@@ -1,4 +1,4 @@
-<suite name="LumaRegressionSuite" verbose="1" parallel="tests" thread-count="3">
+<suite name="LumaRegressionSuite" verbose="1" >
 
     <!-- Global Parameter -->
     <parameter name="appURL" value="https://magento.softwaretestingboard.com"/>
@@ -6,14 +6,10 @@
     <!-- Login Tests -->
     <test name="Login Test">
         <classes>
-            <class name="tests.LoginTest">
-                <methods>
-                    <include name="logInWithValidCredentials"/>
-                </methods>
-            </class>
+            <class name="tests.LoginTest"/>
         </classes>
-    </test>
 
+    </test>
     <!-- TestNG Listener -->
     <listeners>
         <listener class-name="utils.ExtentTestNGListener"/>

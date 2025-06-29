@@ -28,7 +28,7 @@ public class LoginPage {
     }
 
     public void forgotYourPassword(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='action remind']//span[contains(text(),'Forgot Your Password?')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='action remind']//span[contains(text(),'Forgot Your Password?')]")));
         driver.findElement(By.xpath("//a[@class='action remind']//span[contains(text(),'Forgot Your Password?')]")).click();
     }
 
@@ -38,7 +38,7 @@ public class LoginPage {
     }
 
     public String errorMessageForInvalidData(){
-        wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))));
+        wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))));
         return driver.findElement(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")).getText();
     }
 

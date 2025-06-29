@@ -33,12 +33,12 @@ public class RegistrationPage {
     }
 
     public String errorMessageForLowStrengthPassword(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='password-error']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='password-error']")));
        return driver.findElement(By.xpath("//div[@id='password-error']")).getText();
     }
 
     public String errorMessageForInvalidEmail(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("email_address-error")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email_address-error")));
        return driver.findElement(By.id("email_address-error")).getText();
     }
 
@@ -74,17 +74,17 @@ public class RegistrationPage {
     }
 
     public String errorMessageForPasswordMismatch(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("password-confirmation-error")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password-confirmation-error")));
         return driver.findElement(By.id("password-confirmation-error")).getText();
     }
 
     public String errorMessageForAlreadyRegisteredEmail(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")));
         return driver.findElement(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")).getText();
     }
 
     public String errorMessageForLongInputValues(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")));
         return driver.findElement(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")).getText();
     }
 
